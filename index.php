@@ -6,8 +6,16 @@ include_once('class.xmltoarray.php');
    $CWD = getcwd();
 //    echo "BASE NAME = " .  basename($CWD . "/test.xml") . "<br>";
 
-   $filename = "test.xml";
-   $FILENAME = $filename;
+   if ($_GET["file"])
+       {       
+       $filename = $_GET["file"];
+       $FILENAME = basename($_GET["file"]);
+       }
+   else
+       {
+       $filename = "test.xml";
+       $FILENAME = $filename;
+       }
 
     $handle = fopen ($filename, "rb");
     if ($handle)
@@ -38,7 +46,6 @@ $FIRSTNAME = $arrayData["restingecgdata"]["patient"][0]["generalpatientdata"][0]
 	   XOutPut("patientid",$PATID);
 	   XOutPut("lastname",$LASTNAME);
 	   XOutPut("firstname",$FIRSTNAME);
-
 
 	}  // if file $handle
 
